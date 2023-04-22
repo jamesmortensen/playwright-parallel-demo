@@ -49,6 +49,22 @@ jobs:
     - uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: playwright-report-parallel
+        name: playwright-report-${{ matrix.worker }}
         path: playwright-report/
         retention-days: 30
+
+  combine-report:
+    timeout-minutes: 5
+    needs: test-parallel
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+    - uses: actions/download-artifact@v3
+    - name: Combine reports
+      run: |
+        npm install playwright-merge-html-reports --dev
+        ls -ltrSha
