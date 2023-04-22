@@ -1,0 +1,29 @@
+{
+  "name": "playwright-parallel-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "imports": {
+    "#@/*": "./*"
+  },
+  "scripts": {
+    "test:login": "npx playwright test tests/login.spec.ts; npm run generate-report",
+    "test:login:live": "BASEURL=https://the-internet.onrender.com npm run test:login; npm run generate-report",
+    "show-report": "npx playwright show-report",
+    "unit-tests": "npx jasmine unit-tests/*.test.js --config=jasmine.conf.js",
+    "generate-report": "npx allure generate --clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.31.2",
+    "allure-playwright": "^2.1.0",
+    "detailed-logger": "^0.0.6",
+    "dotenv": "^16.0.3",
+    "executely": "^0.0.3",
+    "jasmine": "^4.5.0",
+    "jasmine-spec-reporter": "^7.0.0"
+  }
+}
