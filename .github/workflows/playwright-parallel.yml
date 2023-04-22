@@ -67,4 +67,12 @@ jobs:
     - name: Combine reports
       run: |
         npm install playwright-merge-html-reports --dev
-        ls -ltrSha
+        export FOLDER_NAMES=`ls -d playwright-report-*` 
+        node .github/workflows/bin/merge-reports.js
+    - name: Upload combined reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: merged-html-report
+        path: merged-html-report/
+        retention-days: 30
+        
