@@ -23,7 +23,7 @@ jobs:
       run: npm ci
     - name: Get Playwright Browser versions
       run: |
-        PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
+        PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | head -n1 | sed 's/.*@//')
         echo "Playwright's Version: $PLAYWRIGHT_VERSION"
         echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
     - uses: actions/cache@v3
