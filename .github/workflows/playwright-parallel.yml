@@ -75,4 +75,5 @@ jobs:
         name: merged-html-report
         path: merged-html-report/
         retention-days: 30
-        
+    
+    ## merged-html-report can be uploaded to other services.
